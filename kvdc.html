@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kvdc</title>
+    <style>
+        h1 {
+            color: black;
+        }
+
+        p {
+            color: gray;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center"><u>KVDC BCA BOYS 2023-2026</u></h> <br>
+        <img src="pictures for projects/kvd.webp" about bca group" width="500" height="250%">
+        <br>
+        <h1><u>Discription:</u></h1>
+        <p>“To contact any BCA 2023–2026 batch student, submit a request below.<br> Personal contact details
+            will be
+            shared only after
+            approval to ensure privacy.”</p>
+        <h1><u>Explanation:</u></h1>
+        <p>Batch mentioned → 23–26 year students<br>
+
+            Purpose mentioned → contact requests<br>
+
+            Privacy highlighted → info only after approval</p>
+        <h2>Upload Your Photo</h2>
+        <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
+            <label>Your Name:</label><br>
+            <input type="text" name="student_name" required><br><br>
+
+            <label>Select Photo:</label><br>
+            <input type="file" name="photo" accept="image/*" required><br><br>
+
+        </form>
+        <?php
+        if(isset($_FILES['photo'])){
+            $errors = array();
+            $file_name = $_FILES['photo']['name'];
+            $file_tmp = $_FILES['photo']['tmp_name'];
+            $file_type = $_FILES['photo']['type'];
+            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+        
+            $extensions = array("jpeg","jpg","png","gif");
+        
+            if(in_array($file_ext,$extensions) === false){
+                $errors[] = "Only JPG, PNG, GIF files allowed.";
+            }
+        
+            if(empty($errors)){
+                move_uploaded_file($file_tmp, "uploads/".$file_name);
+                echo "Photo uploaded successfully!";
+            } else {
+                print_r($errors);
+            }
+        
+        <?php
+        $images = glob("uploads/*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+        foreach($images as $img){
+            echo '<img src="'.$img.'" width="150" height="150" style="margin:10px;">
+        
+
+</body>
+<html
